@@ -12,7 +12,7 @@ module Writer3
     config.load_defaults 6.1
     # TODO:次の行の挿入で解決。ActiveSupport::TimeWithZone, ActiveSupport::TimeZoneが必要だったらしい。
     config.active_record.yaml_column_permitted_classes = [Symbol, Date, Hash, Array, ActiveSupport::HashWithIndifferentAccess, ActiveSupport::TimeWithZone, ActiveSupport::TimeZone, Time]
-    # TODO:以下2行はいらなかった
+    # TODO:以下2行はいらないみたい
     # config.active_record.use_yaml_unsafe_load
     # config.active_support.use_yaml_unsafe_load
 
