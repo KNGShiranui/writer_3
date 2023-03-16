@@ -1,0 +1,20 @@
+<div class="row justify-content-md-center">
+  <div class="col-8 p-4">
+    <div class="d-flex justify-content-between mb-3">
+      <%= link_to "\"#{@document.name}\"へ戻る", document_path(@document) %>
+    </div>
+    <h1 class="font-weight-bold mb-4">
+      差分を表示する
+    </h1>
+    <% @version.changeset.keys.select { |key| %i[name content].include?(key) }.each do |key| %>
+      <div class="mb-4">
+        <h3 class="font-weight-bold">
+          <%= Document.human_attribute_name(key) %>
+        </h3>
+        <div>
+          <%= raw Markdiff::Differ.new.render(*@version.changeset[key]) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

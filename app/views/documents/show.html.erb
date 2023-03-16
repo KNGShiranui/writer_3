@@ -1,0 +1,42 @@
+<div class="row justify-content-md-center">
+  <div class="col-8 p-4">
+    <div class="d-flex justify-content-between mb-3">
+      <%= link_to '編集', edit_document_path(@document), class: 'btn btn-outline-dark' %>
+    </div>
+    <h1 class="font-weight-bold mb-4">
+      <%= @document.name %>
+    </h1>
+
+    <div>
+      <%= simple_format(@document.content) %>
+    </div>
+
+    <hr>
+
+    <div>
+      <%= PaperTrail::Version.model_name.human %>
+    </div>
+    <ul>
+      <% @document.versions.each do |version| %>
+        <li class="mb-2">
+          <div>
+            <span>
+              <%= version.created_at %>
+            </span>
+            <span>
+              <%= t("events.#{version.event}", model: version.item.model_name.human) %>
+            </span>
+          </div>
+          <div>
+            <span>
+              <%= link_to 'このバージョンを表示する', document_version_path(version.item, version) %>
+            </span>
+            <span>
+              <%= link_to '差分を表示する', document_change_path(version.item, version) %>
+            </span>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
