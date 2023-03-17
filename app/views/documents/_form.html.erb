@@ -17,7 +17,7 @@
 
   <div class="form-group">
     <div data-controller="trix" data-direct-upload-url="<%= rails_direct_uploads_url %>" data-blob-url-template="<%= rails_service_blob_url(':signed_id', ':filename') %>">
-      <%= form.hidden_field :content %>
+      <%= form.text_field :content %>
       <trix-editor input="document_content" class="trix-content" data-action="trix-attachment-add->trix#attach"></trix-editor>
     </div>
   </div>
